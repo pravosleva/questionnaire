@@ -6,6 +6,7 @@ import AsyncApp from './components/AsyncApp';
 import stt from './reducers';
 
 import './css/index.css';
+import './css/bs-custom.css';
 
 const store = createStore(
   stt,
@@ -16,7 +17,8 @@ const rootEl = document.getElementById('root');
 const render = () => {
   ReactDOM.render(<AsyncApp
       obj={store.getState()}
-      updateFormState={(n) => store.dispatch({ type: 'UPDATE_SELECTED_FORM_NAME', selectedFormName: n })}
+      updateSelectedFormName={(n) => store.dispatch({ type: 'UPDATE_SELECTED_FORM_NAME', selectedFormName: n })}
+      updateForms={(forms) => store.dispatch({ type: 'UPDATE_FORMS', forms })}
     />,
     rootEl
   )
