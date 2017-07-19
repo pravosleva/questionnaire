@@ -13,7 +13,7 @@ class Form extends Component {
     let forms = obj.forms;
     forms.map(function(f, i){
       if(obj.selectedFormName===f.formName){
-        console.log(f);
+        //console.log(f);
         f.inputForms.map((e, i)=>{
           if(e.label===label){ e.value = ev.target.value }
         });
@@ -36,7 +36,7 @@ class Form extends Component {
         }else{
           cName = 'text-muted';
         }
-        switch(e.type){
+        switch(e.inputType){
           case 'input':
             element = <div key={i}>
               <label className={cName}>{e.label}</label>
@@ -51,6 +51,7 @@ class Form extends Component {
           case 'dropdown':
             element = <div key={i}>
               <label className={cName}>{e.label}</label>
+
               <div className="input-group">
                 <input
                   className='form-control input-sm'
@@ -63,18 +64,49 @@ class Form extends Component {
                   </button>
                   <div className="dropdown-menu dropdown-menu-right" role="menu">
                     {
-                      e.values.map((v, j)=>{
+                      e.equipmentTypelist.map((eT, j)=>{
                         return <button key={j} type="button"
                           className="dropdown-item"
-                          value={v}
+                          value={eT.typeName}
                           onClick={this.handler.bind(this, e.label)}
-                        >{v}
+                        >{eT.typeName}
                         </button>
                       })
                     }
                   </div>
                 </span>
               </div>
+
+              {
+                e.equipmentTypelist.map((eT, j)=>{
+                  // --- HUINYA
+                  console.log(eT);
+                  let element = null;
+                  if(eT.liquidTypelist){
+                    /*
+                    if(eT.typeName===e.value){
+                      // Мы работаем с eT (AIR-WATER)
+                      // Требуются выбрать тип жидкости (WATER)
+                      //...
+                      eT.liquidTypelist.map((lT, k)=>{
+                        // Для некоторых жидкостей не требуется концентрация (WATER)
+                        if(lT.percentage!==undefined){
+                          element = <span key={j}>This element have his liquidTypelist & percentage</span>
+                        }else{
+                          element = <span key={j}>This element have his liquidTypelist, w/o percentage</span>
+                        }
+                      })
+                    }
+                    */
+                    element = <ul key={j}>
+                      {eT.liquidTypelist.map((lT, k)=>{return <li key={k}>{lT.liquidType}</li>})}
+                    </ul>;
+                  }
+                  return element;
+                  // ---
+                })
+              }
+
             </div>;
             break;
           default:
