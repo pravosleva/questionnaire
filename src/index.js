@@ -19,6 +19,7 @@ const render = () => {
       obj={store.getState()}
       updateSelectedFormName={(n) => store.dispatch({ type: 'UPDATE_SELECTED_FORM_NAME', selectedFormName: n })}
       updateForms={(forms) => store.dispatch({ type: 'UPDATE_FORMS', forms })}
+      updateComment={(comment) => store.dispatch({ type: 'UPDATE_COMMENT', comment })}
     />,
     rootEl
   )

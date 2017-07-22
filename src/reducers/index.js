@@ -1,6 +1,7 @@
 export default (
   state = {
     selectedFormName: "",
+    comment: "",
     forms: [
       {
         "formName": "Чиллер",
@@ -10,31 +11,74 @@ export default (
             "inputType": "dropdown",
             "label": "Укажите тип чиллера",
             "required": true,
-            "value":"",
+            "value": "",
+            "liquid1TypeValue": "",
+            "liquid2TypeValue": "",
+            "pumpStationTypeValue": "",
             "equipmentTypelist": [
               {
                 "typeName": "AIR-WATER",
-                "liquidTypelist": [
+                "liquid1Typelist": [
+                  { "liquidType": "WATER" },
                   {
-                    "liquidType": "WATER_100"
-                  },
-                  {
-                    "liquidType": "ETHYLENE GLYCOLE",
+                    "liquidType": "MEG",
                     "percentage": ""
                   },
                   {
-                    "liquidType": "PROPYLENE GLYCOLE",
+                    "liquidType": "MPG",
+                    "percentage": ""
+                  }
+                ],
+                "pumpStationTypelist": [
+                  { "typeName": "1 PUMP" },
+                  { "typeName": "1 PUMP + TANK" },
+                  { "typeName": "2 PUMPS" },
+                  { "typeName": "2 PUMPS + TANK" }
+                ]
+              },
+              {
+                "typeName": "WATER-WATER",
+                "liquid1Typelist": [
+                  { "liquidType": "WATER" },
+                  {
+                    "liquidType": "MEG",
+                    "percentage": ""
+                  },
+                  {
+                    "liquidType": "MPG",
+                    "percentage": ""
+                  }
+                ],
+                "liquid2Typelist": [
+                  { "liquidType": "WATER" },
+                  {
+                    "liquidType": "MEG",
+                    "percentage": ""
+                  },
+                  {
+                    "liquidType": "MPG",
                     "percentage": ""
                   }
                 ]
               },
-              { "typeName": "WATER-WATER" },
-              { "typeName": "CONDENSERLESS" }
+              {
+                "typeName": "CONDENSERLESS",
+                "liquid1Typelist": [
+                  { "liquidType": "WATER" },
+                  {
+                    "liquidType": "MEG",
+                    "percentage": ""
+                  },
+                  {
+                    "liquidType": "MPG",
+                    "percentage": ""
+                  }
+                ]
+              }
             ]
           },
           {"inputType": "input", "label": "Требуемая холодопроизводительность", "required": true, "value":""},
-          {"inputType": "input", "label": "Бренд", "required": false, "value":""},
-          {"inputType": "input", "label": "Дополнительные требования", "required": false, "value":""}
+          {"inputType": "input", "label": "Бренд", "required": false, "value":""}
         ]
       },
       {
@@ -54,6 +98,16 @@ export default (
           {"inputType": "input", "label": "Сопротивление сети воздуховодов", "required": true, "value":""},
           {"inputType": "input", "label": "Бренд", "required": false, "value":""}
         ]
+      },
+      {
+        "formName": "Градирня",
+        "inputForms": [
+          {"inputType": "input", "label": "Номер задачи", "required": true, "value":""},
+          {"inputType": "input", "label": "Требуемая холодопроизводительность", "required": true, "value":""},
+          {"inputType": "input", "label": "t мокрого термометра", "required": true, "value":""},
+          {"inputType": "input", "label": "Регион", "required": true, "value":""},
+          {"inputType": "input", "label": "Бренд", "required": false, "value":""}
+        ]
       }
     ]
   },
@@ -63,6 +117,9 @@ export default (
   switch (action.type) {
     case 'UPDATE_SELECTED_FORM_NAME': //console.log(action.addNewSelectionNumberFormState);
       state.selectedFormName = action.selectedFormName;
+      return state;
+    case 'UPDATE_COMMENT':
+      state.comment = action.comment;
       return state;
     default: return state;
   }

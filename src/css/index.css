@@ -8,3 +8,19 @@ label {
   margin-top: 5px !important;
   margin-bottom: 3px !important;;
 }
+
+ul[name='liquidTypelist'] {
+    list-style: none;
+    padding: 0;
+}
+ul[name='liquidTypelist'] > li {
+    padding-left: 1.3em;
+    margin-bottom: 5px;
+}
+ul[name='liquidTypelist'] > li:before {
+    content: '\2605';
+    display: inline-block;
+    margin-left: -1.3em;
+    width: 1.3em;
+    color: lightgray;
+}
