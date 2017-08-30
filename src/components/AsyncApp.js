@@ -11,9 +11,9 @@ class AsyncApp extends Component {
     return (
       <div className="container">
 
-        <h2>Need to select the equipment</h2>
+        <h2>Equipment type should be selected</h2>
         <p>
-          <code>{obj.selectedFormName!==''?obj.selectedFormName:"nothing"}</code> selected.
+          Your current choise: <code>{obj.selectedFormName!==''?obj.selectedFormName:"nothing"}</code>
         </p>
         <div className='row'>
           <div className='col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12'>

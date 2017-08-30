@@ -98,7 +98,7 @@ export default (
         ]
       },
       {
-        "formName": "Градирня",
+        "formName": "Градирня Open Type WET",
         "inputForms": [
           { "inputType": "input", "label": "Номер задачи", "required": true, "value":"" },
           {

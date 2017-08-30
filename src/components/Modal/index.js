@@ -17,7 +17,9 @@ export default class Modal extends React.Component {
 
     return (
       <div style={{ marginBottom:'20px'}}>
-        <button onClick={this.handleOpenModal} className='btn btn-primary btn-sm pull-right shadow' disabled={obj.selectedFormName!==''?false:true}>Open Modal</button>
+        <div className='text-center'>
+          <button onClick={this.handleOpenModal} className='btn btn-primary btn-sm shadow' disabled={obj.selectedFormName!==''?false:true}>Open Modal</button>
+        </div>
         <ReactModal
            isOpen={this.state.showModal}
            contentLabel="Minimal Modal Example"
